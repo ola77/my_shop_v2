@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,7 +10,7 @@ import 'package:myshop/models/products/products.dart';
 import 'package:myshop/models/products_list/products_list.dart';
 import 'package:myshop/res/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:myshop/res/images.dart';
 import 'package:myshop/res/strings.dart';
 import 'package:myshop/widgets/app_bar.dart';
@@ -418,24 +420,19 @@ class _ProductHomeState extends State<ProductHome> {
     });
   }
 
-// Future<void> fetchProducts() async {
-//   try {
-//     final response = await http.get(
-//         "https://jsonplaceholder.typicode.com/photos?_page=$_pageNumber");
-//     List<Product> fetchedProducts =
-//         Product.parseList(json.decode(response.body));
-//     setState(() {
-//       _hasMore = fetchedProducts.length == _defaultPhotosPerPageCount;
-//       _loading = false;
-//       _pageNumber = _pageNumber + 1;
-//       _products.addAll(fetchedProducts);
-//     });
-//   } catch (e) {
-//     setState(() {
-//       _loading = false;
-//       _error = true;
-//     });
-//   }
-// }
+Future<void> fetchProducts() async {
+
+    final response = await http.get(
+        "https://fakestoreapi.com/products");
+    var products = List<ProductsListModel>();
+    if (200 == response.statusCode) {
+      var productsJson = json.decode(response.body);
+      for(var productsJson in productsJson){
+        products.add(ProductsListModel.fromJson(productsJson));
+      }
+    }
+    return products;
+
+}
 }
 

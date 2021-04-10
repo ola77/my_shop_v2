@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:myshop/models/products/product.dart';
-import 'package:myshop/models/products/products.dart';
-import 'package:myshop/models/products/products_response.dart';
 import 'package:myshop/res/colors.dart';
 import 'package:myshop/res/images.dart';
-import 'package:myshop/widgets/m_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myshop/widgets/m_container.dart';
 
-
-class ItemCard extends StatefulWidget {
-
-
-
-  @override
-  _ItemCardState createState() => _ItemCardState();
-}
-
-class _ItemCardState extends State<ItemCard> {
+import 'm_container.dart';
+import 'm_text.dart';
+class CardWidget extends StatelessWidget {
   bool isClicked=true;
-   ProductsModel productsModel;
-  ProductsResponse productsResponse;
-void Clicked(){
-  setState(() {
-    isClicked=!isClicked;
-  });
+int id;
+String image;
 
-}
+  CardWidget(
+      {this.isClicked, this.id, this.image, this.title, this.price, this.size});
+
+  String title;
+String price;
+
   Size size;
 
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
-    productsModel=ModalRoute.of(context).settings.arguments;
-    productsResponse=ModalRoute.of(context).settings.arguments;
+
     return InkWell(
       // onTap: (){
       //   Navigator.pushNamed(
@@ -54,12 +42,12 @@ void Clicked(){
                   Expanded(
                     child: MContainer(
                       borderRadius: BorderRadius.circular(15),
-                          color: Colors.white,
+                      color: Colors.white,
                       child: Hero(
 
-                        tag: "${productsModel.id}",
-                        child: Image.asset(productsModel.frontImage ?? '',
-                          ),
+                        tag: id,
+                        child: Image.asset(image?? '',
+                        ),
                       ),
                       height: size.height,
                       width: size.width,
@@ -69,7 +57,7 @@ void Clicked(){
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: 8.w,vertical: 8.h),
                     child: MText(
-                      text: productsModel.title,
+                      text: title,
                     ),
                   ),
                   Row(
@@ -79,7 +67,7 @@ void Clicked(){
                         padding:  EdgeInsets.symmetric(vertical: 8.h),
                         child: MText(
                           color: AppColors.secondColor,
-                          text: "\$${productsModel.price}",
+                          text: price,
                         ),
                       ),
                       IconButton(
@@ -94,14 +82,12 @@ void Clicked(){
               ),
             ),
             Positioned(
-              top: 10.h,
-              left:110.w,
+                top: 10.h,
+                left:110.w,
                 child: InkWell(
-                  onTap: (){
-                    Clicked();
-                  },
+                  onTap: (){},
                   child: Icon(Icons.favorite,
-                  color: isClicked?AppColors.mRed:AppColors.mDarkGray,),
+                    color: isClicked?AppColors.mRed:AppColors.mDarkGray,),
                 ))
           ],
         ),
