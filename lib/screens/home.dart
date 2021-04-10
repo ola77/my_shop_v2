@@ -19,6 +19,7 @@ import 'package:myshop/screens/favourite.dart';
 import 'package:myshop/utilities/internetConnectivity.dart';
 import 'package:myshop/widgets/app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myshop/widgets/card.dart';
 import 'package:myshop/widgets/floating_action.dart';
 import 'package:myshop/widgets/item_card.dart';
 import 'package:myshop/widgets/loading.dart';
@@ -164,80 +165,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildItemCard(ProductsModel productsModel) {
-    return InkWell(
-      // onTap: (){
-      //   Navigator.pushNamed(
-      //       context,
-      //       DETAILS,arguments:productModel );
-      // },
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Stack(
-          children: [
-            Material(
-              borderRadius: BorderRadius.circular(15),
-              elevation: 5,
-              shadowColor: Colors.blueGrey,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: MContainer(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      child: Hero(
-                        tag: "${productsModel.id}",
-                        child: Image.network(
-                          "${productsModel.frontImage}" ?? '',
-                        ),
-                      ),
-                      height: size.height,
-                      width: size.width,
-                      //child: text,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-                    child: MText(
-                      text: "${productsModel.title}",
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
-                        child: MText(
-                          color: AppColors.secondColor,
-                          text: "\$${productsModel.price}",
-                        ),
-                      ),
-                      IconButton(
-                          icon: SvgPicture.asset(
-                            AppPics.Cart,
-                          ),
-                          onPressed: null),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-                top: 10.h,
-                left: 110.w,
-                child: InkWell(
-                  onTap: () {
-                    Clicked();
-                  },
-                  child: Icon(
-                    Icons.favorite,
-                    color: isClicked ? AppColors.mRed : AppColors.mDarkGray,
-                  ),
-                ))
-          ],
-        ),
-      ),
+    return CardWidget(
+      title:"${productsModel.title}" ,
+      id: "${productsModel.id}",
+      image: "${productsModel.backImage}" ,
+      price:"\$${productsModel.price}" ,
+      isClicked: true,
+
     );
+
   }
 
   Widget buildBottomAppBar() {

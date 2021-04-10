@@ -8,16 +8,14 @@ import 'm_container.dart';
 import 'm_text.dart';
 class CardWidget extends StatelessWidget {
   bool isClicked=true;
-int id;
+String id;
 String image;
-
-  CardWidget(
-      {this.isClicked, this.id, this.image, this.title, this.price, this.size});
-
   String title;
 String price;
-
   Size size;
+  CardWidget(
+      {this.isClicked, this.id, this.image, this.title, this.price, });
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ String price;
                       child: Hero(
 
                         tag: id,
-                        child: Image.asset(image?? '',
+                        child: Image.network(image?? '',
                         ),
                       ),
                       height: size.height,
