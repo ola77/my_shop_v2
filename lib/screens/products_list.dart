@@ -19,6 +19,7 @@ import 'package:myshop/widgets/m_container.dart';
 import 'package:myshop/widgets/m_text.dart';
 
 import 'favourite.dart';
+
 class ProductHome extends StatefulWidget {
   @override
   _ProductHomeState createState() => _ProductHomeState();
@@ -47,10 +48,17 @@ class _ProductHomeState extends State<ProductHome> {
       isClicked = !isClicked;
     });
   }
+@override
+  void initState() {
+    super.initState();
 
+
+  }
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
+    size = MediaQuery
+        .of(context)
+        .size;
 
 
     return Scaffold(
@@ -66,7 +74,6 @@ class _ProductHomeState extends State<ProductHome> {
   }
 
 
-
   Widget buildAppBar(BuildContext context) {
     return appBar(
       textColor: AppColors.secondColor,
@@ -76,6 +83,7 @@ class _ProductHomeState extends State<ProductHome> {
       drawerVisibility: _currentIndex == 0,
     );
   }
+
   Widget buildPageView() {
     return PageView(
       controller: _myPage,
@@ -91,9 +99,13 @@ class _ProductHomeState extends State<ProductHome> {
       ],
     );
   }
+
   Widget buildList() {
     return BlocProvider<ProductsListBloc>(
-      create: (_) => ProductsListBloc()..add(FetchProductsList()),
+      create: (_) =>
+      ProductsListBloc()
+        ..add(FetchProductsList()),
+
       child: BlocConsumer<ProductsListBloc, ProductsListState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -101,26 +113,9 @@ class _ProductHomeState extends State<ProductHome> {
               return Loading();
             }
             if (state is ProductsListSuccess) {
-              print("done");
+              print( state.data);
+              print("doeee");
               return buildProductsList(state.data);
-              //   Container(
-              //   child: ListView(children: [
-              //     Row(
-              //       children: [
-              //         Expanded(
-              //           child: Container(
-              //             padding: EdgeInsets.symmetric(
-              //                 horizontal: 16.w, vertical: 16.h),
-              //             child: MText(
-              //               text: AppStrings.OurProducts,
-              //             ),
-              //           ),
-              //         ),
-              //          buildSort(),
-              //       ],
-              //     ),
-              //   ]),
-              // );
             } else {
               return Center(
                   child: Text(
@@ -131,6 +126,7 @@ class _ProductHomeState extends State<ProductHome> {
           }),
     );
   }
+
   Widget buildHomeBody(List<ProductsListModel>productsList) {
     return Container(
       child:
@@ -156,80 +152,33 @@ class _ProductHomeState extends State<ProductHome> {
       ),
     );
   }
+
   Widget buildProductsList(List<ProductsListModel>productsList,) {
-    // if (_products.isEmpty) {
-    //   if (_loading) {
-    //     return Loading();
-    //   } else if (_error) {
-    //     return Center(
-    //         child: InkWell(
-    //       // onTap: () {
-    //       //   setState(() {
-    //       //     _loading = true;
-    //       //     _error = false;
-    //       //     fetchProducts();
-    //       //   });
-    //       // },
-    //       child: Padding(
-    //         padding: const EdgeInsets.all(16),
-    //         child: Text("Error while loading photos, tap to try agin"),
-    //       ),
-    //     ));
-    //   }
-    // } else {
+
     return Container(
       height: size.height,
       width: size.width,
       child:
 
       GridView.builder(
-          itemCount: 20,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 4.0,
-              mainAxisSpacing: 4.0
-          ),
-          itemBuilder: (BuildContext context, int index) {
-            return buildItemCard(productsList[index]);
+        itemCount: 20,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 4.0,
+            mainAxisSpacing: 4.0
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return buildItemCard(productsList[index]);
 
-            // GridView.count(
-            //   crossAxisCount: 3,
-            //   crossAxisSpacing: 4.0,
-            //   mainAxisSpacing: 8.0,
-            //   children: List.generate(products.length, (index) {
-            //     return Center(
-            //       //child: buildItemCard(products),
-            //     );
-            //   }
-            //   ),
-            //
-            // //   ListView(
-            // //     scrollDirection: Axis.horizontal,
-            // //
-            // //     shrinkWrap: true,
-            // //     physics: ClampingScrollPhysics(),
-            // //     children:
-            // //     products.map((e) =>
-            // //         buildItemCard(
-            // //             e
-            // //         )).toList()
-            // // ),
-            //
-            //
-            // ),
-          } ,
+        },
 
-            ),   );
+      ),);
     //}
     return Container();
   }
+
   Widget buildItemCard(ProductsListModel productsListModel) {
     return InkWell(
-      // onTap: (){
-      //   Navigator.pushNamed(
-      //       context,
-      //       DETAILS,arguments:productModel );
-      // },
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Stack(
@@ -246,9 +195,9 @@ class _ProductHomeState extends State<ProductHome> {
                       color: Colors.white,
                       child: Hero(
                         tag: "${productsListModel.id}",
-                       child: Image.network(
-                         "${productsListModel.image}"?? '',
-                       ),
+                        child: Image.network(
+                          "${productsListModel.image}" ?? '',
+                        ),
                       ),
                       height: size.height,
                       width: size.width,
@@ -269,7 +218,7 @@ class _ProductHomeState extends State<ProductHome> {
                         padding: EdgeInsets.symmetric(vertical: 8.h),
                         child: MText(
                           color: AppColors.secondColor,
-                         text: "\$${productsListModel.price}",
+                          text: "\$${productsListModel.price}",
                         ),
                       ),
                       IconButton(
@@ -299,6 +248,7 @@ class _ProductHomeState extends State<ProductHome> {
       ),
     );
   }
+
   Widget buildSort() {
     return Expanded(
       child: ExpansionPanelList(
@@ -336,6 +286,7 @@ class _ProductHomeState extends State<ProductHome> {
         ),
         backgroundColor: AppColors.secondColor);
   }
+
   Widget buildBottomAppBar() {
     return BottomAppBar(
       elevation: 2,
@@ -420,19 +371,19 @@ class _ProductHomeState extends State<ProductHome> {
     });
   }
 
-Future<void> fetchProducts() async {
+  Future<void> fetchProducts() async {
 
     final response = await http.get(
         "https://fakestoreapi.com/products");
     var products = List<ProductsListModel>();
     if (200 == response.statusCode) {
       var productsJson = json.decode(response.body);
-      for(var productsJson in productsJson){
+      print("fff " + productsJson);
+      for (var productsJson in productsJson) {
         products.add(ProductsListModel.fromJson(productsJson));
       }
     }
     return products;
-
-}
+  }
 }
 
