@@ -11,7 +11,7 @@ ProductsModel _$ProductsModelFromJson(Map<String, dynamic> json) {
     ..id = json['id'] as int
     ..title = json['title'] as String
     ..description = json['description'] as String
-    ..price = json['price'] as int
+    ..price = json['price'] as double
     ..quantity = json['quantity'] as int
     ..frontImage = json['front_image'] as String
     ..backImage = json['back_image'] as String

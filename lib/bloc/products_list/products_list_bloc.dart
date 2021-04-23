@@ -12,7 +12,7 @@ import 'products_list_state.dart';
 class ProductsListBloc extends Bloc<ProductsListEvent, ProductsListState> {
   ProductsListBloc() : super(ProductsListInitial());
 
- List <ProductsListModel> data;
+// List <ProductsListModel> data;
 
   @override
   Stream<ProductsListState> mapEventToState(ProductsListEvent event) async* {
@@ -28,7 +28,7 @@ class ProductsListBloc extends Bloc<ProductsListEvent, ProductsListState> {
       print(result.toString());
       if ( result!= null) {
        print('success');
-        yield ProductsListSuccess(data:data);
+        yield ProductsListSuccess(data:result);
 
       } else
         yield ProductsListFailure(error: result.toString());

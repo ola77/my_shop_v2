@@ -9,9 +9,6 @@ class AppPics{
   static const String product5="assets/images/shower5.Jpeg";
   static const String product6="assets/images/shower6.jpg";
 
-
-
-
   static const String Selected_home= "assets/images/001-home-icon-silhouette.svg";
   static const String Sms= "assets/images/003-sms.svg";
   static const String Add_user= "assets/images/add-user.svg";
@@ -21,5 +18,7 @@ class AppPics{
   static const String Picture= "assets/images/picture.svg";
   static const String Profile= "assets/images/profile.png";
   static const String Cart= "assets/images/cart.svg";
+  static const String LIKE =  "assets/images/like.svg";
+
 
 }

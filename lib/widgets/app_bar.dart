@@ -3,11 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:myshop/res/colors.dart';
 import 'package:myshop/res/images.dart';
 import 'package:myshop/res/strings.dart';
+import 'package:myshop/res/text_styles.dart';
 import 'package:myshop/widgets/m_text.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../routes.dart';
+import '../utilities/routes.dart';
+import 'mtext_display.dart';
 
 AppBar appBar(
     {bool searchVisibility,
@@ -203,5 +205,19 @@ AppBar aboutAppBar(
     iconTheme: IconThemeData(color: Colors.white),
     automaticallyImplyLeading: true,
     bottom: bottom ?? null,
+  );
+}
+
+AppBar buildAppBar({String title, String text}) {
+  return AppBar(
+    centerTitle: true,
+    backgroundColor: Colors.white,
+    elevation: 0,
+    iconTheme: IconThemeData(color: AppColors.BLACK),
+    title: MTextDisplay(
+      translation: title,
+      text: text,
+      textStyle: AppTextStyles.medium_16,
+    ),
   );
 }

@@ -1,0 +1,33 @@
+class ImagePaths {
+  static const String BASE = "assets/images/";
+  static const String ABOUT = BASE + "about.svg";
+  static const String BAG_BLACK = BASE + "bag_black.svg";
+  static const String BAG = BASE + "bag.svg";
+  static const String CONTACT = BASE + "contact.svg";
+  static const String DRAWER = BASE + "drawer.svg";
+  static const String EMAIL = BASE + "email.svg";
+  static const String FACEBOOK = BASE + "facebook.svg";
+  static const String GOOGLE = BASE + "google.svg";
+  static const String INSTAGRAM = BASE + "instagram.svg";
+  static const String LIKE_CIRCLE = BASE + "like_circle.svg";
+  static const String LIKE = BASE + "like.svg";
+  static const String LOCK = BASE + "lock-24px.svg";
+  static const String LOGO_BLACK = BASE + "logo_black.svg";
+  static const String LOGO_WHITE = BASE + "logo_white.svg";
+  static const String LOGO = BASE + "logo.svg";
+  static const String LOGOUT = BASE + "out.svg";
+  static const String PAYMENT_1 = BASE + "payment_1.png";
+  static const String PAYMENT_2 = BASE + "payment_2.svg";
+  static const String PAYMENT_3 = BASE + "payment_3.svg";
+  static const String PAYMENT_4 = BASE + "payment_4.svg";
+  static const String PERSON = BASE + "person-24px.svg";
+  static const String SEARCH = BASE + "search.svg";
+  static const String PHONE = BASE + "stay_primary_portrait-24px.svg";
+  static const String TERMS = BASE + "terms.svg";
+  static const String SUCCESS = BASE + "tick.svg";
+  static const String TWITTER = BASE + "twitter.svg";
+  static const String VERIFICATION = BASE + "verification.svg";
+  static const String VISIBILITY = BASE + "visibility-24px.svg";
+  static const String LOGIN_BANNER = BASE + "login_banner.png";
+  static const String PRODUCT_BARCODE = BASE + "product-barcode.svg";
+}

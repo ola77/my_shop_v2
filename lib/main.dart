@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
-import 'package:myshop/routes.dart';
+import 'file:///C:/Users/ola77/AndroidStudioProjects/my_shop_v2/lib/utilities/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,11 +16,12 @@ class MyApp extends StatelessWidget {
     builder: () => MaterialApp(
     title: 'Flutter Demo',
     theme: ThemeData(
+        fontFamily: 'Cairo', scaffoldBackgroundColor: Colors.white),
+      onGenerateRoute: MRouter.generateRoute,
     ),
 
-    routes: AppRoute.routes,
-    initialRoute: AppRoute.Home,
-    ),
+
+
     );
   }
 }

@@ -1,68 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:myshop/models/products/product.dart';
 import 'package:myshop/res/colors.dart';
 import 'package:myshop/res/images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'file:///C:/Users/ola77/AndroidStudioProjects/my_shop_v2/lib/utilities/routes.dart';
 
 import 'm_container.dart';
 import 'm_text.dart';
-class CardWidget extends StatelessWidget {
-  bool isClicked=true;
-String id;
-String image;
-  String title;
-String price;
-  Size size;
-  CardWidget(
-      {this.isClicked, this.id, this.image, this.title, this.price, });
 
+class CardWidget extends StatelessWidget {
+  bool isClicked = true;
+  String id;
+  String image;
+  String title;
+  String price;
+  Size size;
+  CardWidget({
+    this.isClicked,
+    this.id,
+    this.image,
+    this.title,
+    this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
+    timeDilation = 5.0; // 1.0 means normal animation speed.
 
     return InkWell(
-      // onTap: (){
-      //   Navigator.pushNamed(
-      //       context,
-      //       DETAILS,arguments:productModel );
-      // },
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      onTap: () =>
+          Navigator.pushNamed(context, ITEM_DETAILS, arguments: product),
+      child: Card(
         child: Stack(
           children: [
             Material(
+              type: MaterialType.card,
               borderRadius: BorderRadius.circular(15),
-              elevation: 5,
+              elevation: 3,
               shadowColor: Colors.blueGrey,
               child: Column(
                 children: [
                   Expanded(
-                    child: MContainer(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      child: Hero(
-
-                        tag: id,
-                        child: Image.network(image?? '',
-                        ),
+                    child: Hero(
+                      tag: id,
+                      child: Image.network(
+                        image ?? '',
+                        //height: 100,
+                        fit: BoxFit.fill,
                       ),
-                      height: size.height,
-                      width: size.width,
-                      //child: text,
+                     // transitionOnUserGestures: true,
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: 8.w,vertical: 8.h),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 8.w, vertical: 8.h),
                     child: MText(
                       text: title,
                     ),
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
-                        padding:  EdgeInsets.symmetric(vertical: 8.h),
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
                         child: MText(
                           color: AppColors.secondColor,
                           text: price,
@@ -71,7 +75,6 @@ String price;
                       IconButton(
                           icon: SvgPicture.asset(
                             AppPics.Cart,
-
                           ),
                           onPressed: null),
                     ],
@@ -81,11 +84,13 @@ String price;
             ),
             Positioned(
                 top: 10.h,
-                left:110.w,
+                left: 110.w,
                 child: InkWell(
-                  onTap: (){},
-                  child: Icon(Icons.favorite,
-                    color: isClicked?AppColors.mRed:AppColors.mDarkGray,),
+                  onTap: () {},
+                  child: Icon(
+                    Icons.favorite,
+                    color: isClicked ? AppColors.mRed : AppColors.mDarkGray,
+                  ),
                 ))
           ],
         ),
