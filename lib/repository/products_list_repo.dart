@@ -26,6 +26,7 @@ class ProductsListRepository {
     var products = List<ProductsListModel>();
     if (200 == response.statusCode) {
       var productsJson = json.decode(response.body);
+
       for(var productsJson in productsJson){
         products.add(ProductsListModel.fromJson(productsJson));
       }
