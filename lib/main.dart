@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
-import 'file:///C:/Users/ola77/AndroidStudioProjects/my_shop_v2/lib/utilities/routes.dart';
+import 'package:myshop/utilities/routes.dart';
 
 void main() {
   runApp(MyApp());

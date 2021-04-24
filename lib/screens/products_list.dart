@@ -166,6 +166,7 @@ class _ProductHomeState extends State<ProductHome> {
   }
 
   _onProductTap(BuildContext context, ProductsListModel product) {
+    print(product.title);
     Navigator.pushNamed(context, ITEM_DETAILS, arguments: product);
   }
 
@@ -340,128 +341,6 @@ class _ProductHomeState extends State<ProductHome> {
   }
 
 
-///Un_Used_Code
 
-// Widget buildItemCard(ProductsListModel productsListModel) {
-//   return InkWell(
-//     // onTap: (){
-//     //   Navigator.pushNamed(
-//     //       context,
-//     //       DETAILS,arguments:productModel );
-//     // },
-//     child: Padding(
-//       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-//       child: Stack(
-//         children: [
-//           Material(
-//             borderRadius: BorderRadius.circular(15),
-//             elevation: 5,
-//             shadowColor: Colors.blueGrey,
-//             child: Column(
-//               children: [
-//                 Expanded(
-//                   child: MContainer(
-//                     borderRadius: BorderRadius.circular(15),
-//                     color: Colors.white,
-//                     child: Hero(
-//                       tag: "${productsListModel.id}",
-//                      child: Image.network(
-//                        "${productsListModel.image}"?? '',
-//                      ),
-//                     ),
-//                     height: size.height,
-//                     width: size.width,
-//                     //child: text,
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding:
-//                   EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-//                   child: MText(
-//                     text: "${productsListModel.title}",
-//                   ),
-//                 ),
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                   children: [
-//                     Padding(
-//                       padding: EdgeInsets.symmetric(vertical: 8.h),
-//                       child: MText(
-//                         color: AppColors.secondColor,
-//                        text: "\$${productsListModel.price}",
-//                       ),
-//                     ),
-//                     IconButton(
-//                         icon: SvgPicture.asset(
-//                           AppPics.Cart,
-//                         ),
-//                         onPressed: null),
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//           Positioned(
-//               top: 10.h,
-//               left: 110.w,
-//               child: InkWell(
-//                 onTap: () {
-//                   Clicked();
-//                 },
-//                 child: Icon(
-//                   Icons.favorite,
-//                   color: isClicked ? AppColors.mRed : AppColors.mDarkGray,
-//                 ),
-//               ))
-//         ],
-//       ),
-//     ),
-//   );
-// }
-// Widget buildSort() {
-//   return Expanded(
-//     child: ExpansionPanelList(
-//       // elevation: 0,
-//       expansionCallback: (int index, bool isExpanded) {
-//         setState(() {
-//           isExpanded = !isExpanded;
-//         });
-//       },
-//       children: [
-//         ExpansionPanel(
-//           headerBuilder: (BuildContext context, bool isExpanded) {
-//             return ListTile(
-//               title: MText(
-//                 text: AppStrings.Sort,
-//               ),
-//             );
-//           },
-//           body: ListTile(
-//             title: Text('Item 1 child'),
-//             subtitle: Text('Details goes here'),
-//           ),
-//           isExpanded: false,
-//         ),
-//       ],
-//     ),
-//   );
-// }
-
-
-
-// Future<void> fetchProducts() async {
-//
-//     final response = await http.get(
-//         "https://fakestoreapi.com/products");
-//     var products = List<ProductsListModel>();
-//     if (200 == response.statusCode) {
-//       var productsJson = json.decode(response.body);
-//       for(var productsJson in productsJson){
-//         products.add(ProductsListModel.fromJson(productsJson));
-//       }
-//     }
-//     return products;
-//
-// }
 }
 

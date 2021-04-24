@@ -5,7 +5,7 @@ import 'package:myshop/models/products/product.dart';
 import 'package:myshop/res/colors.dart';
 import 'package:myshop/res/images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'file:///C:/Users/ola77/AndroidStudioProjects/my_shop_v2/lib/utilities/routes.dart';
+import 'package:myshop/utilities/routes.dart';
 
 import 'm_container.dart';
 import 'm_text.dart';

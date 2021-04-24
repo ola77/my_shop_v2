@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:myshop/models/products_list/products_list.dart';
 import 'package:myshop/screens/item_details.dart';
 import 'package:myshop/screens/login.dart';
 import 'package:myshop/screens/products_list.dart';
@@ -29,7 +30,9 @@ class MRouter {
         return MaterialPageRoute(builder: (_) => LoginScreen());
 
       case ITEM_DETAILS:
-        return MaterialPageRoute(builder: (_) => ProductDetailsScreen());
+        ProductsListModel product =sittings.arguments as ProductsListModel;
+
+        return MaterialPageRoute(builder: (_) => ProductDetailsScreen(product: product,));
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(

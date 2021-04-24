@@ -14,25 +14,16 @@ import 'package:myshop/widgets/msize_boxes.dart';
 import 'package:myshop/widgets/mtext_display.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class ProductDetailsScreen extends StatefulWidget {
-  // final String productId;
-  // final int index;
+class ProductDetailsScreen extends StatelessWidget {
 
-  //ProductDetailsScreen({this.productId, this.index});
-
-  @override
-  _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
-}
-
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   final PageController pageController = PageController();
   ProductsListModel product;
+  ProductDetailsScreen({this.product});
+
 
   @override
   Widget build(BuildContext context) {
-
-    product = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -92,7 +83,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           itemCount:3,
           controller: pageController,
           itemBuilder: (context, index) => Image.network(
-            ' ${ product.image[index].length}',
+            '${product.image[index].length}',
             width: double.infinity,
             height: 400.h,
             fit: BoxFit.fill,
